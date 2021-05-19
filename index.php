@@ -38,6 +38,41 @@ $match = [
     ]
 ];
 ?>
+
+
+<!-- ------------------------------------------------------ -->
+
+
+<?php
+/*
+Snack 2
+Passare come parametri GET name, mail e age e verificare 
+(cercando i metodi che non conosciamo nella documentazione) 
+che name sia più lungo di 3 caratteri, che mail contenga un 
+punto e una chiocciola e che age sia un numero. Se tutto è ok 
+stampare “Accesso riuscito”, altrimenti “Accesso negato”
+*/
+
+$name = $_GET['name'];
+$mail = $_GET['mail'];
+$age = $_GET['age'];
+
+if(empty($name) || empty($mail) || empty($age)){
+    echo('<h1> Accesso negato: riempi tutti i campi </h1>');
+}elseif( strlen($name) <= 3){
+    echo('<h1> Accesso negato: nome troppo corto </h1>');
+}elseif (!strpos($mail,'@') || !strpos($mail,'.')) {
+    echo('<h1> Accesso negato: la mail deve contenere una \'@\' e un \'.\' </h1>');
+}elseif (!is_numeric($age)) {
+    echo('<h1> Accesso negato: l\'etá dev\' essere un numero </h1>');
+}else{
+    echo('<h1> Accesso riuscito </h1>');
+}
+?>
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
